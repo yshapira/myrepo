@@ -1,0 +1,13 @@
+- hosts: localhost
+  tasks:
+  - name: Install git
+    yum: name=git state=latest 
+    #sudo: yes
+    become: yse
+    become_method: sudo
+  - name: Clone myrepo
+    git: repo=https://github.com/yshapira/myrepo.git
+         dest=~/myfiles/myrepo
+  - name: Clone spring-petclinic
+    git: repo=https://github.com/yshapira/spring-petclinic.git
+         dest=~/myfiles/spring-petclinic
